@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "e16304ba-7320-40ae-8a73-2f56066526f1",
+		"name": "百度翻译API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19391679"
+	},
+	"item": [
+		{
+			"name": "中转英",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"翻译结果：\"+ jsonData.trans_result[0].dst, function () {\r",
+							"    pm.expect(jsonData.to).to.eql(\"en\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{https_ip}}{{fanyi_url}}?q=测试&from=zh&to=en&appid=20220622001254313&salt=484320&sign=5a8ebacb0b07336fbfeed6bb00dfe6e4",
+					"host": [
+						"{{https_ip}}{{fanyi_url}}"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "测试"
+						},
+						{
+							"key": "from",
+							"value": "zh"
+						},
+						{
+							"key": "to",
+							"value": "en"
+						},
+						{
+							"key": "appid",
+							"value": "20220622001254313"
+						},
+						{
+							"key": "salt",
+							"value": "484320"
+						},
+						{
+							"key": "sign",
+							"value": "5a8ebacb0b07336fbfeed6bb00dfe6e4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
